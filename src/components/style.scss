@@ -16,43 +16,4 @@ $react-drawer-options: (
   & + .webkit-sassui-backdrop{
     position: fixed;
   }
-
-  position: fixed;
-  left: 0;
-  bottom: 0;
-  backface-visibility: hidden;
-  height: 100%;
-  box-sizing: border-box;
-
-  @keyframes webkit-sassui-drawer-in {
-    from {
-      transform: translateX(-100%);
-    }
-
-    to {
-      transform: translateX(0);
-    }
-  }
-
-  @keyframes webkit-sassui-drawer-out {
-    from {
-      transform: translateX(0);
-    }
-
-    to {
-      transform: translateX(-100%);
-    }
-  }
-
-  &.visible-true,
-  &[data-visible="true"] {
-    animation: $duration webkit-sassui-drawer-in ease-in-out forwards;
-  }
-
-  &.visible-false,
-  &[data-visible="false"] {
-    animation: $duration webkit-sassui-drawer-out ease-in-out forwards;
-  }
-
-
 }

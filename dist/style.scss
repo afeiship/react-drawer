@@ -1,5 +1,19 @@
-$react-drawer-options: () !default;
+$react-drawer-options: (
+  duration: 300ms,
+  z-index: (
+    modal: 100,
+    backdrop: 98
+  )
+) !default;
 
 .react-drawer {
-  // your styles
+  $duration: map-get( $map: $react-drawer-options, $key: duration );
+  $z-index: map-get( $map: $react-drawer-options, $key: z-index );
+  $drawer-z-index: map-get( $map: $z-index, $key: drawer );
+  $backdrop-z-index: map-get( $map: $z-index, $key: backdrop );
+
+  &,
+  & + .webkit-sassui-backdrop{
+    position: fixed;
+  }
 }

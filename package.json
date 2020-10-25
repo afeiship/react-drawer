@@ -6,7 +6,7 @@
   "scripts": {
     "dev": "cross-env NODE_ENV=development webpack-dev-server",
     "build": "cross-env NODE_ENV=production webpack -p",
-    "predocs": "node build/markdown.js",
+    "markdown": "node build/markdown.js",
     "docs": "cross-env NODE_ENV=docs webpack -p",
     "pages": "./bin/docs.rb",
     "start": "node build/server.js",
@@ -79,6 +79,7 @@
     "@feizheng/noop": "^1.0.0",
     "@feizheng/react-backdrop": "^1.0.6",
     "@feizheng/react-visible": "^1.0.15",
+    "@feizheng/webkit-sassui-drawer": "^1.0.1",
     "classnames": "^2.2.6"
   },
   "publishConfig": {

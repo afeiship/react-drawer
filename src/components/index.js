@@ -1,12 +1,13 @@
-import React, { Component } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
 import ReactVisible from '@feizheng/react-visible';
 import ReactBackdrop from '@feizheng/react-backdrop';
 
 const CLASS_NAME = 'react-drawer';
+const PLACEMENT_LIST = ['left', 'right'];
 
-export default class ReactModal extends ReactVisible {
+export default class ReactModal extends React.Component {
   static displayName = CLASS_NAME;
   static version = '__VERSION__';
   static propTypes = {
@@ -14,19 +15,28 @@ export default class ReactModal extends ReactVisible {
     /**
      * Backdrop props or not display backdrop.
      */
-    backdrop: PropTypes.oneOfType([PropTypes.bool, PropTypes.object])
+    backdrop: PropTypes.oneOfType([
+      PropTypes.bool,
+      PropTypes.object
+    ]),
+    /**
+     * Drawer come from where.
+     */
+    placement: PropTypes.oneOf(PLACEMENT_LIST)
   };
 
   static defaultProps = {
     ...ReactVisible.defaultProps,
     destroyable: true,
-    rootable: true
+    rootable: true,
+    placement: 'left'
   };
 
   get visibleElementView() {
     const {
       className,
       backdrop,
+      placement,
       destroyable,
       onDismiss,
       onPresent,
@@ -40,8 +50,9 @@ export default class ReactModal extends ReactVisible {
         onClick={(e) => e.stopPropagation()}
         hidden={hidden}
         data-visible={value}
+        data-placement={placement}
         onAnimationEnd={this.handleAnimationEnd}
-        className={classNames(`${CLASS_NAME}`, className)}
+        className={classNames(`webkit-sassui-drawer ${CLASS_NAME}`, className)}
         {...props}>
         {children}
       </div>

@@ -6,7 +6,9 @@ import './assets/style.scss';
 
 class App extends React.Component {
   state = {
-    value: false
+    value: false,
+    placement: 'left',
+    items: ['left', 'right']
   };
 
   toggleModal = (inKey) => {
@@ -18,7 +20,22 @@ class App extends React.Component {
       <ReactDemokit
         className="p-3 app-container"
         url="https://github.com/afeiship/react-drawer">
+        <p className="p-3  text-center m-3">
+          <label htmlFor="placement" className="text-white mr-3">
+            Placement
+          </label>
+          <select
+            id="placement"
+            value={this.state.placement}
+            onChange={(e) => {
+              this.setState({ placement: e.target.value });
+            }}>
+            <option value="left">Left</option>
+            <option value="right">Right</option>
+          </select>
+        </p>
         <ReactDrawer
+          placement={this.state.placement}
           backdrop={{
             onClick: () => {
               this.toggleModal('value');
