@@ -33,6 +33,8 @@ npm update @feizheng/react-drawer
 ## usage
 1. import css
   ```scss
+  @import "~@feizheng/webkit-sassui-backdrop";
+  @import "~@feizheng/webkit-sassui-drawer";
   @import "~@feizheng/react-drawer/dist/style.scss";
 
   // customize your styles:
