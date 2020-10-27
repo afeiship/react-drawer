@@ -1,6 +1,6 @@
 {
   "name": "@feizheng/react-drawer",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "Drawer for react.",
   "main": "dist/index.js",
   "scripts": {
