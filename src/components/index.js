@@ -7,7 +7,7 @@ import ReactBackdrop from '@feizheng/react-backdrop';
 const CLASS_NAME = 'react-drawer';
 const PLACEMENT_LIST = ['left', 'right'];
 
-export default class ReactModal extends React.Component {
+export default class ReactModal extends ReactVisible {
   static displayName = CLASS_NAME;
   static version = '__VERSION__';
   static propTypes = {
