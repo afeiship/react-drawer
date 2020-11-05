@@ -1,6 +1,6 @@
 {
   "name": "@feizheng/react-drawer",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "description": "Drawer for react.",
   "main": "dist/index.js",
   "scripts": {
@@ -18,7 +18,12 @@
   },
   "keywords": [
     "react",
-    "component"
+    "drawer",
+    "modal",
+    "popup",
+    "controller",
+    "component",
+    "componets"
   ],
   "author": "afei",
   "license": "MIT",
