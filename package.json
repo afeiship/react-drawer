@@ -20,17 +20,15 @@
     "url": "git+https://github.com/afeiship/react-drawer.git"
   },
   "keywords": [
-    "boilerplate",
     "react",
+    "drawer",
+    "modal",
+    "popup",
+    "controller",
     "component",
-    "cra",
-    "template",
-    "webpack",
-    "sass",
-    "scss",
-    "docs",
-    "service-worker",
-    "sw"
+    "componets",
+    "ui",
+    "web"
   ],
   "author": "afei",
   "license": "MIT",
