@@ -8,12 +8,7 @@
 
 ## installation
 ```shell
-npm install -S @feizheng/react-drawer
-```
-
-## update
-```shell
-npm update @feizheng/react-drawer
+npm install -S @jswork/react-drawer
 ```
 
 ## properties
@@ -113,7 +108,6 @@ npm update @feizheng/react-drawer
   }
 
   ReactDOM.render(<App />, document.getElementById('app'));
-
   ```
 
 ## documentation
@@ -123,14 +117,14 @@ npm update @feizheng/react-drawer
 ## license
 Code released under [the MIT license](https://github.com/afeiship/react-drawer/blob/master/LICENSE.txt).
 
-[version-image]: https://img.shields.io/npm/v/@feizheng/react-drawer
-[version-url]: https://npmjs.org/package/@feizheng/react-drawer
+[version-image]: https://img.shields.io/npm/v/@jswork/react-drawer
+[version-url]: https://npmjs.org/package/@jswork/react-drawer
 
-[license-image]: https://img.shields.io/npm/l/@feizheng/react-drawer
+[license-image]: https://img.shields.io/npm/l/@jswork/react-drawer
 [license-url]: https://github.com/afeiship/react-drawer/blob/master/LICENSE.txt
 
-[size-image]: https://img.shields.io/bundlephobia/minzip/@feizheng/react-drawer
+[size-image]: https://img.shields.io/bundlephobia/minzip/@jswork/react-drawer
 [size-url]: https://github.com/afeiship/react-drawer/blob/master/dist/react-drawer.min.js
 
-[download-image]: https://img.shields.io/npm/dm/@feizheng/react-drawer
-[download-url]: https://www.npmjs.com/package/@feizheng/react-drawer
+[download-image]: https://img.shields.io/npm/dm/@jswork/react-drawer
+[download-url]: https://www.npmjs.com/package/@jswork/react-drawer

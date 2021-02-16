@@ -1,0 +1,6 @@
+.react-drawer {
+  z-index: 100; }
+  .react-drawer,
+  .react-drawer + .wsui-backdrop {
+    position: fixed;
+    z-index: 100; }

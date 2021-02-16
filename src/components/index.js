@@ -1,8 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
-import ReactVisible from '@feizheng/react-visible';
-import ReactBackdrop from '@feizheng/react-backdrop';
+import ReactVisible from '@jswork/react-visible';
+import ReactBackdrop from '@jswork/react-backdrop';
 
 const CLASS_NAME = 'react-drawer';
 const PLACEMENT_LIST = ['left', 'right'];
@@ -15,10 +15,7 @@ export default class ReactModal extends ReactVisible {
     /**
      * Backdrop props or not display backdrop.
      */
-    backdrop: PropTypes.oneOfType([
-      PropTypes.bool,
-      PropTypes.object
-    ]),
+    backdrop: PropTypes.oneOfType([PropTypes.bool, PropTypes.object]),
     /**
      * Drawer come from where.
      */
@@ -52,7 +49,7 @@ export default class ReactModal extends ReactVisible {
         data-visible={value}
         data-placement={placement}
         onAnimationEnd={this.handleAnimationEnd}
-        className={classNames(`webkit-sassui-drawer ${CLASS_NAME}`, className)}
+        className={classNames(`wsui-drawer ${CLASS_NAME}`, className)}
         {...props}>
         {children}
       </div>

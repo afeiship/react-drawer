@@ -1,4 +1,4 @@
-import ReactDemokit from '@feizheng/react-demokit';
+import ReactDemokit from '@jswork/react-demokit';
 import React from 'react';
 import ReactDOM from 'react-dom';
 import ReactDrawer from '../src/main';
@@ -20,7 +20,7 @@ class App extends React.Component {
       <ReactDemokit
         className="p-3 app-container"
         url="https://github.com/afeiship/react-drawer">
-        <p className="p-3  text-center m-3">
+        <p className="p-2 has-background-white text-center mb-2">
           <label htmlFor="placement" className="text-white mr-3">
             Placement
           </label>
@@ -59,9 +59,9 @@ class App extends React.Component {
           </div>
         </ReactDrawer>
         <button
-          className="button"
+          className="button is-fullwidth is-primary"
           onClick={this.toggleModal.bind(this, 'value')}>
-          Start~
+          Toggle Modal
         </button>
       </ReactDemokit>
     );

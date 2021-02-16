@@ -13,7 +13,7 @@ $react-drawer-options: (
   z-index: $drawer-z-index;
 
   &,
-  & + .webkit-sassui-backdrop{
+  & + .wsui-backdrop{
     position: fixed;
     z-index: $drawer-z-index
   }
