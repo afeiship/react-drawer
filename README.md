@@ -28,19 +28,19 @@ npm install -S @jswork/react-drawer
 ## usage
 1. import css
   ```scss
-  @import "~@feizheng/webkit-sassui-backdrop";
-  @import "~@feizheng/webkit-sassui-drawer";
-  @import "~@feizheng/react-drawer/dist/style.scss";
+  @import "~@jswork/wsui-backdrop";
+  @import "~@jswork/wsui-drawer";
+  @import "~@jswork/react-drawer/dist/style.scss";
 
   // customize your styles:
   $react-drawer-options: ()
   ```
 2. import js
   ```js
-  import ReactDemokit from '@feizheng/react-demokit';
+  import ReactDemokit from '@jswork/react-demokit';
   import React from 'react';
   import ReactDOM from 'react-dom';
-  import ReactDrawer from '@feizheng/react-drawer';
+  import ReactDrawer from '@jswork/react-drawer';
   import './assets/style.scss';
 
   class App extends React.Component {
