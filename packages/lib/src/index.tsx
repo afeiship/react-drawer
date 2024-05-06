@@ -82,8 +82,8 @@ export default class ReactDrawer extends Component<ReactDrawerProps> {
   private elementRef = React.createRef<HTMLDialogElement>();
   private backdropRef = React.createRef<HTMLDivElement>();
   private uuid = this.props.uuid || `${CLASS_NAME}-${uuid()}`;
-  private veElement: VisibleElement;
-  private veBackdrop: VisibleElement;
+  private veElement: VisibleElement = null as any;
+  private veBackdrop: VisibleElement = null as any;
 
   // ---- dom elements ----
   get dialog() {
