@@ -1,7 +1,6 @@
 .react-drawer {
   $placements: left right top bottom;
 
-  left: 0;
   top: 0;
   bottom: 0;
   height: 100%;
@@ -62,19 +61,19 @@
   // Keyframes for animations
   @keyframes show-drawer-left {
     from {
-      left: -100%;
+      transform: translateX(-100%);
       opacity: 0;
     }
 
     to {
-      left: 0;
+      transform: translateX(0);
       opacity: 1;
     }
   }
 
   @keyframes hide-drawer-left {
     to {
-      left: -100%;
+      transform: translateX(-100%);
       opacity: 0;
     }
   }
@@ -83,23 +82,24 @@
   &[data-placement="right"] {
     left: auto;
     right: 0;
+    transform: translateX(0);
   }
 
   @keyframes show-drawer-right {
     from {
-      right: -100%;
+      transform: translateX(100%);
       opacity: 0;
     }
 
     to {
-      right: 0;
+      transform: translateX(0);
       opacity: 1;
     }
   }
 
   @keyframes hide-drawer-right {
     to {
-      right: -100%;
+      transform: translateX(100%);
       opacity: 0;
     }
   }
@@ -110,23 +110,24 @@
     width: 100%;
     height: auto;
     bottom: auto;
+    transform: translateY(0);
   }
 
   @keyframes show-drawer-top {
     from {
-      top: -100%;
+      transform: translateY(-100%);
       opacity: 0;
     }
 
     to {
-      top: 0;
+      transform: translateY(0);
       opacity: 1;
     }
   }
 
   @keyframes hide-drawer-top {
     to {
-      top: -100%;
+      transform: translateY(-100%);
       opacity: 0;
     }
   }
@@ -137,23 +138,24 @@
     width: 100%;
     height: auto;
     bottom: 0;
+    transform: translateY(0);
   }
 
   @keyframes show-drawer-bottom {
     from {
-      bottom: -100%;
+      transform: translateY(100%);
       opacity: 0;
     }
 
     to {
-      bottom: 0;
+      transform: translateY(0);
       opacity: 1;
     }
   }
 
   @keyframes hide-drawer-bottom {
     to {
-      bottom: -100%;
+      transform: translateY(100%);
       opacity: 0;
     }
   }

@@ -5,7 +5,7 @@ import VisibleElement, { VisibleState } from '@jswork/visible-element';
 
 const CLASS_NAME = 'react-drawer';
 const uuid = () => Math.random().toString(36).substring(2, 9);
-
+export type Placement = 'top' | 'right' | 'bottom' | 'left';
 export type ReactDrawerProps = {
   /**
    * The extended className for component.
@@ -21,7 +21,7 @@ export type ReactDrawerProps = {
    * The drawer placement.
    * @default 'left'
    */
-  placement?: 'top' | 'right' | 'bottom' | 'left';
+  placement?: Placement;
   /**
    * The dialog zIndex.
    * @default 100
@@ -79,18 +79,18 @@ export default class ReactDrawer extends Component<ReactDrawerProps> {
     closeOnBackdropClick: false,
   };
 
-  private dialogRef = React.createRef<HTMLDialogElement>();
+  private elementRef = React.createRef<HTMLDialogElement>();
   private backdropRef = React.createRef<HTMLDivElement>();
   private uuid = this.props.uuid || `${CLASS_NAME}-${uuid()}`;
-  private veDialog: VisibleElement;
+  private veElement: VisibleElement;
   private veBackdrop: VisibleElement;
 
   // ---- dom elements ----
   get dialog() {
-    return this.dialogRef.current as HTMLDialogElement;
+    return this.elementRef.current as HTMLDialogElement;
   }
 
-  get dialogStyle() {
+  get elementStyle() {
     const { zIndex, style } = this.props;
     return { zIndex, ...style } as React.StyleHTMLAttributes<HTMLDialogElement>;
   }
@@ -110,16 +110,12 @@ export default class ReactDrawer extends Component<ReactDrawerProps> {
   };
 
   // ---- life cycle start ----
-  constructor(props: ReactDrawerProps) {
-    super(props);
-    window.addEventListener('keydown', this.handleKeyDown);
-  }
-
   componentDidMount() {
     const { visible } = this.props;
     if (visible) this.present();
-    this.veDialog = new VisibleElement(this.dialog, { onChange: this.handleVeChange });
+    this.veElement = new VisibleElement(this.dialog, { onChange: this.handleVeChange });
     this.veBackdrop = new VisibleElement(this.backdrop);
+    window.addEventListener('keydown', this.handleKeyDown);
   }
 
   shouldComponentUpdate(nextProps: ReactDrawerProps): boolean {
@@ -137,14 +133,14 @@ export default class ReactDrawer extends Component<ReactDrawerProps> {
 
   // ---- public methods ----
   present = () => {
-    this.veDialog.show();
-    this.veBackdrop.show();
+    this.veElement?.show();
+    this.veBackdrop?.show();
   };
 
   dismiss = () => {
     const { onClose } = this.props;
-    this.veDialog.close();
-    this.veBackdrop.close();
+    this.veElement?.close();
+    this.veBackdrop?.close();
     onClose?.();
   };
 
@@ -191,8 +187,8 @@ export default class ReactDrawer extends Component<ReactDrawerProps> {
           data-fixed={fixed}
           data-placement={placement}
           className={cx(CLASS_NAME, className)}
-          ref={this.dialogRef}
-          style={this.dialogStyle}
+          ref={this.elementRef}
+          style={this.elementStyle}
           {...dialogProps}
         >
           {keepChildren ? children : null}
