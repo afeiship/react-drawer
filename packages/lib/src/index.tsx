@@ -6,7 +6,7 @@ import VisibleElement, { VisibleState } from '@jswork/visible-element';
 const CLASS_NAME = 'react-drawer';
 const uuid = () => Math.random().toString(36).substring(2, 9);
 
-export type ReactDialogProps = {
+export type ReactDrawerProps = {
   /**
    * The extended className for component.
    * @default ''
@@ -65,7 +65,7 @@ export type ReactDialogProps = {
   backdropProps?: HTMLAttributes<HTMLDivElement>;
 } & HTMLAttributes<HTMLDialogElement> & React.RefAttributes<HTMLDialogElement>;
 
-export default class ReactDrawer extends Component<ReactDialogProps> {
+export default class ReactDrawer extends Component<ReactDrawerProps> {
   static displayName = CLASS_NAME;
   static version = '__VERSION__';
   static defaultProps = {
@@ -110,7 +110,7 @@ export default class ReactDrawer extends Component<ReactDialogProps> {
   };
 
   // ---- life cycle start ----
-  constructor(props: ReactDialogProps) {
+  constructor(props: ReactDrawerProps) {
     super(props);
     window.addEventListener('keydown', this.handleKeyDown);
   }
@@ -122,7 +122,7 @@ export default class ReactDrawer extends Component<ReactDialogProps> {
     this.veBackdrop = new VisibleElement(this.backdrop);
   }
 
-  shouldComponentUpdate(nextProps: ReactDialogProps): boolean {
+  shouldComponentUpdate(nextProps: ReactDrawerProps): boolean {
     const { visible } = nextProps;
     if (visible) this.present();
     if (!visible) this.dismiss();
