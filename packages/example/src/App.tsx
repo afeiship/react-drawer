@@ -1,10 +1,13 @@
-import React from'react';
+import React from 'react';
 import ReactDrawer from '@jswork/react-drawer/src';
 import './index.css';
 import '@jswork/react-drawer/src/style.scss';
 
+const placements = ['top', 'right', 'bottom', 'left'];
+
 function App() {
   const [visible, setVisible] = React.useState(false);
+  const [placement, setPlacement] = React.useState<any>('left');
 
   const handleOpen = () => {
     setVisible(true);
@@ -17,7 +20,13 @@ function App() {
   return (
     <div className="h-screen relative">
       <button className="mt-5 bg-red-400 text-white p-2 w-1/4" onClick={handleOpen}>Open</button>
-      <ReactDrawer visible={visible} withBackdrop keepMounted closeOnBackdropClick onClose={handleClose} className="w-64 bg-gray-100 p-4">
+      <select name="placement" value={placement} onChange={(e) => setPlacement(e.target.value)}>
+        {placements.map((item) => (
+          <option key={item} value={item}>{item}</option>
+        ))}
+      </select>
+      <ReactDrawer visible={visible} withBackdrop keepMounted closeOnBackdropClick onClose={handleClose}
+                   placement={placement} className="w-64 bg-gray-100 p-4">
         <ul>
           <li>道可道，非常道；名可名，非常名。</li>
           <li>无名，天地之始，有名，万物之母。</li>
