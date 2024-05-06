@@ -1,3 +1,92 @@
-//.react-component-library {
-//  color: red;
-//}
+.react-drawer {
+  --react-drawer-z-index: 100;
+  --react-drawer-backdrop-z-index: 99;
+
+  z-index: var(--react-drawer-z-index);
+  left: 0;
+  top: 0;
+  bottom: 0;
+  height: 100%;
+  opacity: 1;
+  margin: 0;
+
+
+  [hidden] {
+    display: none;
+  }
+
+  // data-fixed="true" means the dialog will be fixed to the top of the screen
+  &[data-fixed="true"] {
+    position: fixed;
+  }
+
+  &[data-fixed="false"] {
+    position: absolute;
+  }
+
+  // ----- visible and hidden animations for dialog and backdrop start -----
+  &[data-visible="true"] {
+    animation: show-drawer 0.3s;
+  }
+
+  &[data-visible="false"] {
+    animation: hide-drawer 0.3s;
+  }
+
+
+  &__backdrop {
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.1);
+    position: absolute;
+    z-index: var(--react-drawer-backdrop-z-index);
+
+    &[data-visible="true"] {
+      animation: show-backdrop 0.3s;
+    }
+
+    &[data-visible="false"] {
+      animation: hide-backdrop 0.3s;
+    }
+  }
+
+  // ----- visible and hidden animations for dialog and backdrop end -----
+
+  // Keyframes for animations
+  @keyframes show-drawer {
+    from {
+      left: -100%;
+      opacity: 0;
+    }
+
+    to {
+      left: 0;
+      opacity: 1;
+    }
+  }
+
+  @keyframes hide-drawer {
+    to {
+      left: -100%;
+      opacity: 0;
+    }
+  }
+
+  @keyframes show-backdrop {
+    from {
+      opacity: 0;
+    }
+
+    to {
+      opacity: 1;
+    }
+  }
+
+  @keyframes hide-backdrop {
+    to {
+      opacity: 0;
+    }
+  }
+}

@@ -3,6 +3,7 @@ files:
   - 'packages/**/*.js'
   - 'packages/**/*.json'
   - 'packages/**/*.tsx'
+  - 'packages/**/*.scss'
   - 'packages/**/*.md'
   - '.*'
   - '*'
