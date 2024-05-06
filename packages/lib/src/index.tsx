@@ -18,6 +18,11 @@ export type ReactDialogProps = {
    */
   backdropClassName?: string;
   /**
+   * The drawer placement.
+   * @default 'left'
+   */
+  placement?: 'top' | 'right' | 'bottom' | 'left';
+  /**
    * The dialog zIndex.
    * @default 100
    */
@@ -64,13 +69,14 @@ export default class ReactDrawer extends Component<ReactDialogProps> {
   static displayName = CLASS_NAME;
   static version = '__VERSION__';
   static defaultProps = {
+    placement: 'left',
     zIndex: 100,
     visible: false,
     fixed: false,
     withBackdrop: false,
     keepMounted: false,
     closeOnEscape: false,
-    closeOnBackdropClick: false
+    closeOnBackdropClick: false,
   };
 
   private dialogRef = React.createRef<HTMLDialogElement>();
@@ -100,7 +106,7 @@ export default class ReactDrawer extends Component<ReactDialogProps> {
 
   // ---- state react ----
   state = {
-    animateVisible: this.props.visible
+    animateVisible: this.props.visible,
   };
 
   // ---- life cycle start ----
@@ -158,6 +164,7 @@ export default class ReactDrawer extends Component<ReactDialogProps> {
     const {
       className,
       backdropClassName,
+      placement,
       visible,
       withBackdrop,
       zIndex,
@@ -182,6 +189,7 @@ export default class ReactDrawer extends Component<ReactDialogProps> {
           aria-modal="true"
           data-component={CLASS_NAME}
           data-fixed={fixed}
+          data-placement={placement}
           className={cx(CLASS_NAME, className)}
           ref={this.dialogRef}
           style={this.dialogStyle}
