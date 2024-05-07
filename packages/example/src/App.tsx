@@ -19,12 +19,16 @@ function App() {
 
   return (
     <div className="h-screen relative">
-      <button className="mt-5 bg-red-400 text-white p-2 w-1/4" onClick={handleOpen}>Open</button>
-      <select name="placement" value={placement} onChange={(e) => setPlacement(e.target.value as Placement)}>
-        {placements.map((item) => (
-          <option key={item} value={item}>{item}</option>
-        ))}
-      </select>
+      <nav className="pt-4 mx-auto fc x-2 w-1/5">
+        <button className="btn btn-default btn-wide" onClick={handleOpen}>Open</button>
+        <select name="placement" className="border border-gray-300 rounded-md px-2 py-1 ml-2" value={placement}
+                onChange={(e) => setPlacement(e.target.value as Placement)}>
+          {placements.map((item) => (
+            <option key={item} value={item}>{item}</option>
+          ))}
+        </select>
+      </nav>
+
       <ReactDrawer visible={visible} withBackdrop keepMounted closeOnBackdropClick closeOnEscape onClose={handleClose}
                    placement={placement} className="w-64 bg-gray-100 p-4">
         <ul>
@@ -34,7 +38,7 @@ function App() {
           <li>此两者，同出而异名，同谓之玄，玄之又玄，众妙之门。</li>
         </ul>
         <nav>
-          <button className="bg-blue-400 text-white p-2 w-full" onClick={handleClose}>Close</button>
+          <button className="btn btn-primary mt-2 w-full" onClick={handleClose}>Close</button>
         </nav>
       </ReactDrawer>
     </div>
