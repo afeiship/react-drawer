@@ -21,7 +21,7 @@ function App() {
     <div className="h-screen relative">
       <nav className="pt-4 mx-auto fc x-2 w-1/5">
         <button className="btn btn-default btn-wide" onClick={handleOpen}>Open</button>
-        <select name="placement" className="border border-gray-300 rounded-md px-2 py-1 ml-2" value={placement}
+        <select name="placement" className="select select-bordered w-full" value={placement}
                 onChange={(e) => setPlacement(e.target.value as Placement)}>
           {placements.map((item) => (
             <option key={item} value={item}>{item}</option>
