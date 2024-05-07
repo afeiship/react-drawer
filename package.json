@@ -4,6 +4,7 @@
   "description": "Drawer for react.",
   "homepage": "https://js.work",
   "private": true,
+  "type": "module",
   "workspaces": [
     "packages/*"
   ],

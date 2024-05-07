@@ -5,6 +5,7 @@ files:
   - 'packages/**/*.tsx'
   - 'packages/**/*.scss'
   - 'packages/**/*.md'
+  - 'scripts/*'
   - '.*'
   - '*'
   - '!node_modules'
