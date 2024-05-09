@@ -1,6 +1,6 @@
-import noop from '@jswork/noop';
 import cx from 'classnames';
 import React, { Component, HTMLAttributes } from 'react';
+import ReactBackdrop from '@jswork/react-backdrop';
 import VisibleElement, { VisibleState } from '@jswork/visible-element';
 
 const CLASS_NAME = 'react-drawer';
@@ -80,10 +80,8 @@ export default class ReactDrawer extends Component<ReactDrawerProps> {
   };
 
   private elementRef = React.createRef<HTMLDialogElement>();
-  private backdropRef = React.createRef<HTMLDivElement>();
   private uuid = this.props.uuid || `${CLASS_NAME}-${uuid()}`;
-  private veElement: VisibleElement = null as any;
-  private veBackdrop: VisibleElement = null as any;
+  private ve: VisibleElement = null as any;
 
   // ---- dom elements ----
   get dialog() {
@@ -95,15 +93,6 @@ export default class ReactDrawer extends Component<ReactDrawerProps> {
     return { zIndex, ...style } as React.StyleHTMLAttributes<HTMLDialogElement>;
   }
 
-  get backdrop() {
-    return this.backdropRef.current as HTMLDivElement;
-  }
-
-  get backdropStyle() {
-    const { zIndex, style } = this.props;
-    return { zIndex: zIndex! - 1, ...style } as React.StyleHTMLAttributes<HTMLDivElement>;
-  }
-
   // ---- state react ----
   state = {
     animateVisible: this.props.visible,
@@ -112,16 +101,14 @@ export default class ReactDrawer extends Component<ReactDrawerProps> {
   // ---- life cycle start ----
   componentDidMount() {
     const { visible } = this.props;
-    if (visible) this.present();
-    this.veElement = new VisibleElement(this.dialog, { onChange: this.handleVeChange });
-    this.veBackdrop = new VisibleElement(this.backdrop);
+    this.ve = new VisibleElement(this.dialog, { onChange: this.handleVeChange });
+    if (visible) this.ve.show();
     window.addEventListener('keydown', this.handleKeyDown);
   }
 
   shouldComponentUpdate(nextProps: ReactDrawerProps): boolean {
     const { visible } = nextProps;
-    if (visible) this.present();
-    if (!visible) this.dismiss();
+    if (visible !== this.props.visible) this.ve?.to(visible);
     return true;
   }
 
@@ -130,30 +117,26 @@ export default class ReactDrawer extends Component<ReactDrawerProps> {
   }
 
   // ---- life cycle end ----
-
-  // ---- public methods ----
-  present = () => {
-    this.veElement?.show();
-    this.veBackdrop?.show();
-  };
-
-  dismiss = () => {
-    const { onClose } = this.props;
-    this.veElement?.close();
-    this.veBackdrop?.close();
-    onClose?.();
-  };
-
   handleVeChange = (state: VisibleState) => {
+    const { onClose } = this.props;
     if (state === 'show') this.setState({ animateVisible: true });
-    if (state === 'closed') this.setState({ animateVisible: false });
+    if (state === 'closed') {
+      this.setState({ animateVisible: false });
+      onClose?.();
+    }
   };
 
   handleKeyDown = (event: KeyboardEvent) => {
     const { closeOnEscape } = this.props;
     const { key } = event;
     if (!closeOnEscape) return;
-    if ('Escape' === key) this.dismiss();
+    if ('Escape' === key) this.ve?.close();
+  };
+
+  handleBackdropClick = () => {
+    const { closeOnBackdropClick, onClose } = this.props;
+    if (!closeOnBackdropClick) return;
+    onClose?.();
   };
 
   render() {
@@ -196,15 +179,14 @@ export default class ReactDrawer extends Component<ReactDrawerProps> {
 
         {
           withBackdrop && (
-            <div
+            <ReactBackdrop
+              fixed={fixed}
+              visible={visible}
+              zIndex={zIndex! - 1}
               id={`${this.uuid}-backdrop`}
+              className={backdropClassName}
               role="backdrop"
-              aria-hidden="true"
-              hidden
-              className={cx(`${CLASS_NAME}__backdrop`, backdropClassName)}
-              ref={this.backdropRef}
-              onClick={closeOnBackdropClick ? this.dismiss : noop}
-              style={this.backdropStyle}
+              onClick={this.handleBackdropClick}
               {...backdropProps}
             />
           )

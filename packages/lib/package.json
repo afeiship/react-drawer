@@ -29,7 +29,8 @@
   },
   "dependencies": {
     "@jswork/noop": "^1.0.0",
-    "@jswork/visible-element": "^1.0.4",
+    "@jswork/react-backdrop": "^1.1.2",
+    "@jswork/visible-element": "^1.0.5",
     "classnames": "^2.5.1"
   },
   "keywords": [

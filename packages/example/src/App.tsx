@@ -2,6 +2,7 @@ import React from 'react';
 import ReactDrawer, { Placement } from '@jswork/react-drawer/src';
 import './index.css';
 import '@jswork/react-drawer/src/style.scss';
+import '@jswork/react-backdrop/dist/style.css';
 
 const placements = ['top', 'right', 'bottom', 'left'];
 
