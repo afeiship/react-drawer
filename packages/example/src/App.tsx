@@ -19,19 +19,32 @@ function App() {
   };
 
   return (
-    <div className="h-screen relative">
+    <div className="h-screen overflow-hidden relative">
+      <div className="badge badge-warning absolute right-0 top-0 m-4">
+        Build Time: {BUILD_TIME}
+      </div>
       <nav className="pt-4 mx-auto fc x-2 w-1/5">
         <button className="btn btn-default btn-wide" onClick={handleOpen}>Open</button>
-        <select name="placement" className="select select-bordered w-full" value={placement}
-                onChange={(e) => setPlacement(e.target.value as Placement)}>
+        <select
+          name="placement"
+          className="select select-bordered w-full"
+          value={placement}
+          onChange={(e) => setPlacement(e.target.value as Placement)}>
           {placements.map((item) => (
             <option key={item} value={item}>{item}</option>
           ))}
         </select>
       </nav>
 
-      <ReactDrawer visible={visible} withBackdrop keepMounted closeOnBackdropClick closeOnEscape onClose={handleClose}
-                   placement={placement} className="w-64 bg-gray-100 p-4">
+      <ReactDrawer
+        visible={visible}
+        withBackdrop
+        keepMounted
+        closeOnBackdropClick
+        closeOnEscape
+        onClose={handleClose}
+        placement={placement}
+        className="w-64 bg-gray-100 p-4">
         <ul>
           <li>道可道，非常道；名可名，非常名。</li>
           <li>无名，天地之始，有名，万物之母。</li>
