@@ -1,6 +1,6 @@
 import cx from 'classnames';
 import React, { Component, HTMLAttributes } from 'react';
-import ReactBackdrop from '@jswork/react-backdrop';
+import ReactBackdrop, { ReactBackdropProps } from '@jswork/react-backdrop';
 import VisibleElement, { VisibleState } from '@jswork/visible-element';
 
 const CLASS_NAME = 'react-drawer';
@@ -62,7 +62,7 @@ export type ReactDrawerProps = {
   /**
    * The backdrop props.
    */
-  backdropProps?: HTMLAttributes<HTMLDivElement>;
+  backdropProps?: ReactBackdropProps;
 } & HTMLAttributes<HTMLDialogElement> & React.RefAttributes<HTMLDialogElement>;
 
 export default class ReactDrawer extends Component<ReactDrawerProps> {
